@@ -1,19 +1,23 @@
 package io.codeforall.blue;
 
+import org.academiadecodigo.simplegraphics.keyboard.Keyboard;
+import org.academiadecodigo.simplegraphics.keyboard.KeyboardEvent;
+import org.academiadecodigo.simplegraphics.keyboard.KeyboardEventType;
+import org.academiadecodigo.simplegraphics.keyboard.KeyboardHandler;
 import org.academiadecodigo.simplegraphics.pictures.Picture;
 
-public class PacMan extends GameObjects implements Movable{
+public class PacMan extends GameObjects implements Movable, KeyboardHandler {
 
-    private Picture[] pacMan = new Picture[4];
     private Picture currentPacMan;
+    private Keyboard keyboard;
     private int lifes = 3;
     public final int distance = 10;
 
     public PacMan() {
         currentPacMan = new Picture();
-        createPacManArray();
-        currentPacMan = pacMan[3];
+        currentPacMan = new Picture(currentPacMan.getX(), currentPacMan.getY(),"Resources/PacManRight.png");;
         currentPacMan.draw();
+        init();
     }
 
     @Override
@@ -56,17 +60,59 @@ public class PacMan extends GameObjects implements Movable{
         currentPacMan.draw();
     }
 
-    private void createPacManArray(){
-        pacMan[0] = new Picture(currentPacMan.getX(), currentPacMan.getY(),"Resources/PacManUp.png");
-        pacMan[1] = new Picture(currentPacMan.getX(), currentPacMan.getY(),"Resources/PacManDown.png");
-        pacMan[2] = new Picture(currentPacMan.getX(), currentPacMan.getY(),"Resources/PacManLeft.png");
-        pacMan[3] = new Picture(currentPacMan.getX(), currentPacMan.getY(),"Resources/PacManRight.png");
-    }
     public int getWidth(){
         return currentPacMan.getWidth();
     }
 
     public int getHeight(){
         return currentPacMan.getHeight();
+    }
+    public void init() {
+
+        keyboard = new Keyboard(this);
+        KeyboardEvent pressedRight = new KeyboardEvent();
+        pressedRight.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
+        pressedRight.setKey(KeyboardEvent.KEY_RIGHT);
+        keyboard.addEventListener(pressedRight);
+
+        KeyboardEvent pressedLeft = new KeyboardEvent();
+        pressedLeft.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
+        pressedLeft.setKey(KeyboardEvent.KEY_LEFT);
+        keyboard.addEventListener(pressedLeft);
+
+        KeyboardEvent pressedUp = new KeyboardEvent();
+        pressedUp.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
+        pressedUp.setKey(KeyboardEvent.KEY_UP);
+        keyboard.addEventListener(pressedUp);
+
+        KeyboardEvent pressedDown = new KeyboardEvent();
+        pressedDown.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
+        pressedDown.setKey(KeyboardEvent.KEY_DOWN);
+        keyboard.addEventListener(pressedDown);
+
+    }
+
+    @Override
+    public void keyPressed(KeyboardEvent keyboardEvent) {
+        switch (keyboardEvent.getKey()) {
+            case KeyboardEvent.KEY_RIGHT:
+                moveRight();
+                break;
+            case KeyboardEvent.KEY_LEFT:
+                moveLeft();
+                break;
+            case KeyboardEvent.KEY_UP:
+                moveUp();
+                break;
+            case KeyboardEvent.KEY_DOWN:
+                moveDown();
+                break;
+        }
+
+    }
+
+    @Override
+    public void keyReleased(KeyboardEvent keyboardEvent) {
+
     }
 }
