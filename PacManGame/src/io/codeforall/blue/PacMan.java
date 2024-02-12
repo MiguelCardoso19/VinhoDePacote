@@ -13,10 +13,12 @@ public class PacMan extends GameObjects implements Movable, KeyboardHandler {
     private int lifes = 3;
     public final int distance = 10;
 
-    public PacMan() {
-        currentPacMan = new Picture();
-        currentPacMan = new Picture(currentPacMan.getX(), currentPacMan.getY(),"Resources/PacManRight.png");;
-        currentPacMan.draw();
+    private GridPosition pos;
+
+    public PacMan(GridPosition pos) {
+        this.pos = pos;
+        //currentPacMan = new Picture(pos.getCol(), pos.getRow(),"Resources/PacManRight.png");
+        //currentPacMan.draw();
         init();
     }
 
@@ -67,6 +69,11 @@ public class PacMan extends GameObjects implements Movable, KeyboardHandler {
     public int getHeight(){
         return currentPacMan.getHeight();
     }
+
+    public GridPosition getPos() {
+        return pos;
+    }
+
     public void init() {
 
         keyboard = new Keyboard(this);
