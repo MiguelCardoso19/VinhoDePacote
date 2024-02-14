@@ -9,7 +9,7 @@ public class Pacman implements KeyboardHandler {
     private Ellipse currentPacMan;
     private Keyboard keyboard;
     private int lifes = 3;
-    public final int distance = 10;
+    public final int distance = 10; // Speed
     private Grid pos;
     private int x;
     private int y;
@@ -19,46 +19,46 @@ public class Pacman implements KeyboardHandler {
         this.x = x;
         this.y = y;
 
-        this.currentPacMan = new Ellipse(x, y, 20, 20);
+        this.currentPacMan = new Ellipse(x, y, pos.getCellSize() - 10, pos.getCellSize() - 10); // Adjust the size according to the new cell size
         this.currentPacMan.setColor(Color.YELLOW);
         this.currentPacMan.fill();
     }
 
     public void moveUp() {
-        if (!willCollide(x + distance, y)) {
-            this.currentPacMan.translate(0.5, -distance);
+        if (!willCollide(x, y - distance)) {
+            this.currentPacMan.translate(0, -distance);
             y -= distance;
         }
     }
 
     public void moveDown() {
-        if (!willCollide(x + distance, y)) {
-            this.currentPacMan.translate(0.5, distance);
+        if (!willCollide(x, y + distance)) {
+            this.currentPacMan.translate(0, distance);
             y += distance;
         }
     }
 
     public void moveLeft() {
-        if (!willCollide(x + distance, y)) {
-            this.currentPacMan.translate(-distance, 0.5);
+        if (!willCollide(x - distance, y)) {
+            this.currentPacMan.translate(-distance, 0);
             x -= distance;
         }
     }
 
     public void moveRight() {
         if (!willCollide(x + distance, y)) {
-            this.currentPacMan.translate(distance, 0.5);
+            this.currentPacMan.translate(distance, 0);
             x += distance;
         }
-
     }
 
     private boolean willCollide(int newX, int newY) {
         int gridX = (newX - pos.getBeginningX()) / pos.getCellSize();
         int gridY = (newY - pos.getBeginningY()) / pos.getCellSize();
 
-        // Check if the new position overlaps with a wall (represented by "2, 1, 3" in the maze)
-        return pos.getCellValue(gridY, gridX).equals("1");
+        // Check if the new position overlaps with a wall represented by "1" in the maze
+        String cellValue = pos.getCellValue(gridY, gridX);
+        return cellValue.equals("1");
     }
 
     public void die() {
