@@ -32,7 +32,7 @@ public class Pacman implements KeyboardHandler {
     }
 
     public void moveDown() {
-        if (!willCollide(x, y + distance)) {
+        if (!willCollide(x, y + distance + 35)) {
             this.currentPacMan.translate(0, distance);
             y += distance;
         }
@@ -46,7 +46,7 @@ public class Pacman implements KeyboardHandler {
     }
 
     public void moveRight() {
-        if (!willCollide(x + distance, y)) {
+        if (!willCollide(x + distance +35, y)) {
             this.currentPacMan.translate(distance, 0);
             x += distance;
         }
