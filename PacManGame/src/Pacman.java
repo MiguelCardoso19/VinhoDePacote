@@ -19,7 +19,7 @@ public class Pacman implements KeyboardHandler {
         this.x = x;
         this.y = y;
 
-        this.currentPacMan = new Ellipse(x, y, pos.getCellSize() - 10, pos.getCellSize() - 10); // Adjust the size according to the new cell size
+        this.currentPacMan = new Ellipse(x, y, pos.getCellSize(), pos.getCellSize()); // Adjust the size according to the new cell size
         this.currentPacMan.setColor(Color.YELLOW);
         this.currentPacMan.fill();
     }
@@ -32,21 +32,21 @@ public class Pacman implements KeyboardHandler {
     }
 
     public void moveDown() {
-        if (!willCollide(x, y + distance + 35)) {
+        if (!willCollide(x , y + 48 + distance)) {
             this.currentPacMan.translate(0, distance);
             y += distance;
         }
     }
 
     public void moveLeft() {
-        if (!willCollide(x - distance, y)) {
+        if (!willCollide(x - distance , y)) {
             this.currentPacMan.translate(-distance, 0);
             x -= distance;
         }
     }
 
     public void moveRight() {
-        if (!willCollide(x + distance +35, y)) {
+        if (!willCollide(x +50 + distance , y)) {
             this.currentPacMan.translate(distance, 0);
             x += distance;
         }
