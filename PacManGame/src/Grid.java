@@ -11,7 +11,6 @@ public class Grid {
     private int height;
 
 
-
     private String[][] maze = {
             {"1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1"},
             {"1", "2", "2", "2", "1", "1", "1", "1", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "1"},
@@ -23,7 +22,7 @@ public class Grid {
             {"1", "0", "1", "1", "1", "1", "1", "1", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "1"},
             {"1", "0", "1", "1", "1", "1", "1", "1", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "1"},
             {"1", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "1"},
-            {"1", "0", "1", "1", "1", "1", "1", "1", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "1"},
+            {"1", "0", "1", "1", "1", "1", "1", "1", "0", "0", "0", "0", "0", "G", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "1"},
             {"1", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "1"},
             {"1", "0", "1", "1", "1", "1", "1", "1", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "1"},
             {"1", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "1"},
@@ -35,6 +34,7 @@ public class Grid {
     };
 
     private Pacman pacman;
+    private Ghost[] ghosts;
     private Coin[][] coins;
     private Heart[] hearts;
 
@@ -71,6 +71,7 @@ public class Grid {
     public String getCellValue(int row, int col) {
         return maze[row][col];
     }
+
     public void removeHeart() {
         // Find the last heart in the hearts array
         for (int i = hearts.length - 1; i >= 0; i--) {
@@ -83,6 +84,7 @@ public class Grid {
             }
         }
     }
+
     private void drawMaze() {
         Rectangle background = new Rectangle(beginningX, beginningY, width * CELL_SIZE, height * CELL_SIZE);
         background.setColor(Color.BLACK);
@@ -100,10 +102,10 @@ public class Grid {
                     Rectangle wall = new Rectangle(x, y, CELL_SIZE, CELL_SIZE);
                     wall.setColor(Color.BLUE);
                     wall.fill();
-                }  else if (cell.equals("P")) { //Pacman
+                } else if (cell.equals("P")) { //Pacman
                     pacman = new Pacman(this, x, y, coins);
                     pacman.init();
-                }   else if (cell.equals("0")) { //Coin
+                } else if (cell.equals("0")) { //Coin
                     Coin coin = new Coin(x, y, "Resources/coin2.png");
                     coins[i][j] = coin;
 
@@ -118,8 +120,32 @@ public class Grid {
                         }
                     }
                 }
+                if (cell.equals("G")) {
+                    ghosts = new Ghost[4];
+                    for (int h = 0; h < ghosts.length; h++) {
+                        ghosts[h] = new Ghost(this, x, y);
+                    }
 
+                }
             }
+
         }
     }
+
+
+    public void init() throws InterruptedException {
+        while (true) {
+            Thread.sleep(200);
+            int num = 0;
+            while (num < 2) {
+                for (Ghost g : ghosts) {
+                    g.move();
+                }
+                num++;
+            }
+        }
+
+
+    }
 }
+
