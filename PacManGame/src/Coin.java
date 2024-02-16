@@ -1,11 +1,26 @@
-import org.academiadecodigo.simplegraphics.graphics.Color;
-import org.academiadecodigo.simplegraphics.graphics.Ellipse;
+import org.academiadecodigo.simplegraphics.pictures.Picture;
 
 public class Coin {
-    public static void drawCoin(int beginningX, int beginningY, int width, int height){
-        Ellipse coin = new Ellipse(beginningX+20,beginningY+20,width,height);
-        coin.setColor(Color.ORANGE);
-        coin.fill();
+    private int x;
+    private int y;
+    private Picture coinPicture;
 
+    public Coin(int x, int y, String picturePath) {
+        this.x = x;
+        this.y = y;
+        this.coinPicture = new Picture(x, y, picturePath);
+        this.coinPicture.draw();
+    }
+
+    public void delete() {
+        coinPicture.delete();
+    }
+
+    public int getX() {
+        return x;
+    }
+
+    public int getY() {
+        return y;
     }
 }
