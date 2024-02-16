@@ -7,8 +7,17 @@
     <list default="true" id="959becad-2f5a-4839-ba07-f489a0f80fc0" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/../.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/PacManGame/Grid.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PacManGame/Grid.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/PacManGame/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PacManGame/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/PacManGame/Pacman.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PacManGame/Pacman.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Grid.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Grid.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Pacman.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Pacman.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Resources/PacManDown.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Resources/PacManLeft.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Resources/PacManRight.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Resources/PacManUp.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Resources/coin2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Resources/heart.png" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,6 +61,7 @@
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
     &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
@@ -78,7 +88,8 @@
       <workItem from="1707936181969" duration="1777000" />
       <workItem from="1708018195569" duration="1096000" />
       <workItem from="1708074100213" duration="29000" />
-      <workItem from="1708079181275" duration="4420000" />
+      <workItem from="1708079181275" duration="5241000" />
+      <workItem from="1708085859602" duration="5948000" />
     </task>
     <servers />
   </component>

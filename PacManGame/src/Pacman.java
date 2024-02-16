@@ -5,11 +5,12 @@ import org.academiadecodigo.simplegraphics.keyboard.Keyboard;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEvent;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEventType;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardHandler;
+import org.academiadecodigo.simplegraphics.pictures.Picture;
 
 public class Pacman implements KeyboardHandler {
 
     private Grid grid;
-    private Ellipse currentPacMan;
+    private Picture currentPacMan;
     private Keyboard keyboard;
     private int lives = 4;
     public final int distance = 10; // Speed
@@ -18,7 +19,7 @@ public class Pacman implements KeyboardHandler {
     private int y;
     private Coin[][] coins;
     private int score = 0;
-    private Text score2 = new Text(300, 80, toString());
+    private Text score2 = new Text(690, 170, toString());
 
     public Pacman(Grid pos, int x, int y, Coin[][] coins) {
         this.pos = pos;
@@ -26,10 +27,9 @@ public class Pacman implements KeyboardHandler {
         this.y = y;
         this.coins = coins;
 
-        this.currentPacMan = new Ellipse(x, y, pos.getCellSize() , pos.getCellSize()); // Adjust the size according to the new cell size
-        this.currentPacMan.setColor(Color.YELLOW);
-        this.currentPacMan.fill();
-        score2.grow(80, 30);
+        this.currentPacMan = new Picture(x, y, "Resources/PacManUp.png");
+        currentPacMan.draw();
+        score2.grow(65, 30);
         score2.draw();
         score2.setColor(Color.WHITE);
 
@@ -39,6 +39,9 @@ public class Pacman implements KeyboardHandler {
         if (!willCollide(x, y - distance)) {
             this.currentPacMan.translate(0, -distance);
             y -= distance;
+            currentPacMan.delete();
+            currentPacMan = new Picture(currentPacMan.getX(), currentPacMan.getY(),"Resources/PacManUp.png");
+            currentPacMan.draw();
             checkCoinCollision();
         }
     }
@@ -47,6 +50,9 @@ public class Pacman implements KeyboardHandler {
         if (!willCollide(x, y + pos.getCellSize())) {
             this.currentPacMan.translate(0, distance);
             y += distance;
+            currentPacMan.delete();
+            currentPacMan = new Picture(currentPacMan.getX(), currentPacMan.getY(),"Resources/PacManDown.png");
+            currentPacMan.draw();
             checkCoinCollision();
         }
     }
@@ -55,6 +61,9 @@ public class Pacman implements KeyboardHandler {
         if (!willCollide(x - distance , y)) {
             this.currentPacMan.translate(-distance, 0);
             x -= distance;
+            currentPacMan.delete();
+            currentPacMan = new Picture(currentPacMan.getX(), currentPacMan.getY(),"Resources/PacManLeft.png");
+            currentPacMan.draw();
             checkCoinCollision();
         }
     }
@@ -64,6 +73,9 @@ public class Pacman implements KeyboardHandler {
         if (!willCollide(x + pos.getCellSize(), y) && x < rightBound - pos.getCellSize()) {
             this.currentPacMan.translate(distance, 0);
             x += distance;
+            currentPacMan.delete();
+            currentPacMan = new Picture(currentPacMan.getX(), currentPacMan.getY(),"Resources/PacManRight.png");
+            currentPacMan.draw();
             checkCoinCollision();
         }
     }
