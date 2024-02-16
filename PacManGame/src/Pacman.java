@@ -1,5 +1,6 @@
 import org.academiadecodigo.simplegraphics.graphics.Color;
 import org.academiadecodigo.simplegraphics.graphics.Ellipse;
+import org.academiadecodigo.simplegraphics.graphics.Text;
 import org.academiadecodigo.simplegraphics.keyboard.Keyboard;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEvent;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEventType;
@@ -17,6 +18,7 @@ public class Pacman implements KeyboardHandler {
     private int y;
     private Coin[][] coins;
     private int score = 0;
+    private Text score2 = new Text(300, 80, toString());
 
     public Pacman(Grid pos, int x, int y, Coin[][] coins) {
         this.pos = pos;
@@ -27,6 +29,9 @@ public class Pacman implements KeyboardHandler {
         this.currentPacMan = new Ellipse(x, y, pos.getCellSize() , pos.getCellSize()); // Adjust the size according to the new cell size
         this.currentPacMan.setColor(Color.YELLOW);
         this.currentPacMan.fill();
+        score2.grow(80, 30);
+        score2.draw();
+        score2.setColor(Color.WHITE);
 
     }
 
@@ -92,10 +97,22 @@ public class Pacman implements KeyboardHandler {
                 coin.delete();
                 coins[gridY][gridX] = null;
                 score += 100;
+                score2.setText(toString());
+                score2.delete();
+                score2.draw();
 
                 System.out.println("Score: " + score);
             }
         }
+    }
+
+    public int getScore(){
+        return score;
+    }
+
+    @Override
+    public String toString() {
+        return "SCORE: " + score;
     }
 
     public void die() {

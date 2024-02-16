@@ -1,5 +1,6 @@
 import org.academiadecodigo.simplegraphics.graphics.Color;
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
+import org.academiadecodigo.simplegraphics.graphics.Text;
 
 public class Grid {
     public static final int CELL_SIZE = 50;
@@ -8,6 +9,8 @@ public class Grid {
     private int beginningY;
     private int width;
     private int height;
+
+
 
     private String[][] maze = {
             {"1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1"},
@@ -93,20 +96,18 @@ public class Grid {
                 int x = this.beginningX + this.CELL_SIZE * j;
                 int y = this.beginningY + this.CELL_SIZE * i;
 
-                if (cell.equals("1")) {
+                if (cell.equals("1")) { //Rectangle(Wall)
                     Rectangle wall = new Rectangle(x, y, CELL_SIZE, CELL_SIZE);
                     wall.setColor(Color.BLUE);
                     wall.fill();
-                } else if (cell.equals("P")) {
+                }  else if (cell.equals("P")) { //Pacman
                     pacman = new Pacman(this, x, y, coins);
                     pacman.init();
-                }  else if (cell.equals("P")) {
-                    pacman = new Pacman(this, x, y, coins);
-                    pacman.init();
-                }   else if (cell.equals("0")) {
+                }   else if (cell.equals("0")) { //Coin
                     Coin coin = new Coin(x, y, "Resources/coin2.png");
                     coins[i][j] = coin;
-                } else if (cell.equals("2")) {
+
+                } else if (cell.equals("2")) { //Heart
                     if (hearts == null) {
                         hearts = new Heart[3];
                     }

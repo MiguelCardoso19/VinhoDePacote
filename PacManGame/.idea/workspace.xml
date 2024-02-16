@@ -62,6 +62,9 @@
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
     </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="" />
+    </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -74,6 +77,8 @@
       <workItem from="1707936063709" duration="5000" />
       <workItem from="1707936181969" duration="1777000" />
       <workItem from="1708018195569" duration="1096000" />
+      <workItem from="1708074100213" duration="29000" />
+      <workItem from="1708079181275" duration="4420000" />
     </task>
     <servers />
   </component>
