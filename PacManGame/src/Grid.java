@@ -104,7 +104,7 @@ public class Grid {
                     pacman = new Pacman(this, x, y, coins);
                     pacman.init();
                 }   else if (cell.equals("0")) { //Coin
-                    Coin coin = new Coin(x, y, "Resources/coin2.png");
+                    Coin coin = new Coin(x, y, "Resources/wine.png");
                     coins[i][j] = coin;
 
                 } else if (cell.equals("2")) { //Heart

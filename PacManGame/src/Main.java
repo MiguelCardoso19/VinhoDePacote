@@ -15,7 +15,7 @@ public class Main implements KeyboardHandler {
     }
 
     public void init() {
-        startMenu = new Picture(10, 10, "Resources/presstoplay.jpg");
+        startMenu = new Picture(10, 10, "Resources/presstoplayV2.jpg");
         startMenu.draw();
 
         Keyboard keyboard = new Keyboard(this);

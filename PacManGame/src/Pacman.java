@@ -25,7 +25,7 @@ public class Pacman implements KeyboardHandler {
         this.y = y;
         this.coins = coins;
 
-        this.currentPacMan = new Picture(x, y, "Resources/PacManUp.png");
+        this.currentPacMan = new Picture(x, y, "Resources/ZePovo.png");
         currentPacMan.draw();
         score2.grow(65, 30);
         score2.draw();
@@ -37,9 +37,6 @@ public class Pacman implements KeyboardHandler {
         if (!willCollide(x, y - distance)) {
             this.currentPacMan.translate(0, -distance);
             y -= distance;
-            currentPacMan.delete();
-            currentPacMan = new Picture(currentPacMan.getX(), currentPacMan.getY(),"Resources/PacManUp.png");
-            currentPacMan.draw();
             checkCoinCollision();
         }
     }
@@ -48,9 +45,6 @@ public class Pacman implements KeyboardHandler {
         if (!willCollide(x, y + pos.getCellSize())) {
             this.currentPacMan.translate(0, distance);
             y += distance;
-            currentPacMan.delete();
-            currentPacMan = new Picture(currentPacMan.getX(), currentPacMan.getY(),"Resources/PacManDown.png");
-            currentPacMan.draw();
             checkCoinCollision();
         }
     }
@@ -59,9 +53,6 @@ public class Pacman implements KeyboardHandler {
         if (!willCollide(x - distance , y)) {
             this.currentPacMan.translate(-distance, 0);
             x -= distance;
-            currentPacMan.delete();
-            currentPacMan = new Picture(currentPacMan.getX(), currentPacMan.getY(),"Resources/PacManLeft.png");
-            currentPacMan.draw();
             checkCoinCollision();
         }
     }
@@ -71,9 +62,6 @@ public class Pacman implements KeyboardHandler {
         if (!willCollide(x + pos.getCellSize(), y) && x < rightBound - pos.getCellSize()) {
             this.currentPacMan.translate(distance, 0);
             x += distance;
-            currentPacMan.delete();
-            currentPacMan = new Picture(currentPacMan.getX(), currentPacMan.getY(),"Resources/testsize.png");
-            currentPacMan.draw();
             checkCoinCollision();
         }
     }
